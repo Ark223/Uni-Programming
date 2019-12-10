@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <conio.h>
 
-void Wypelnij(char* a, int n)
+void FillText(char* a, int n)
 {
     for (int i = 1; i <= n; i++) printf("%s", a);
 }
@@ -17,9 +17,9 @@ int main()
         if (i == n) b = -1;
         int max = 2 * n - 1; b += 2;
         int step = (max - b) / 2;
-        Wypelnij(" ", step);
-        Wypelnij("*", max - step * 2);
-        Wypelnij(" ", step);
+        FillText(" ", step);
+        FillText("*", max - step * 2);
+        FillText(" ", step);
         printf("\n");
     }
     getche();
