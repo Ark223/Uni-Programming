@@ -13,8 +13,8 @@ int main()
     printf("Wartosc silnii z %d dla typu long: %lld\n", n, res);
     res = SilniaLongLong(n);
     printf("Wartosc silnii z %d dla typu long long: %lld\n", n, res);
-    res = SilniaRecursive(n);
-    printf("Wartosc silnii z %d rekursywnie: %lld\n", n, res);
+    res = SilniaRecursively(n);
+    printf("Wartosc silnii z %d rekurencyjnie: %lld\n", n, res);
     wynik = res;
     return 0;
 }

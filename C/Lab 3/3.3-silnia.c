@@ -22,7 +22,7 @@ long long SilniaLongLong(int n)
     return a;
 }
 
-int SilniaRecursive(int n)
+int SilniaRecursively(int n)
 {
-    return n < 2 ? 1 : n * SilniaRecursive(n - 1);
+    return n < 2 ? 1 : n * SilniaRecursively(n - 1);
 }
