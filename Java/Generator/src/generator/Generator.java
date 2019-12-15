@@ -7,7 +7,7 @@ import java.util.List;
 public class Generator {
     
     public static void main(String[] args) {
-        GSquareData data = generateSquares(generatePoints(new Vector2(-8, 8), 16, 1), 16);
+        GSquareData data = generateSquares(generatePoints(new Vector2(-8, 8), 16, 2), 16);
         int i = 0;
         for (Square l : data.squares) {
             i++; System.out.println(i + ".");
