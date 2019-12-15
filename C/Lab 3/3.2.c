@@ -36,8 +36,10 @@ int main(int argc, char* argv[])
         case 1: c = a & b; break;
         case 2: c = a | b; break;
         case 3: c = a ^ b; break;
-        default: printf("Wprowadzono bledna operacje"); return;
+        case 4: break;
+        default: printf("Wprowadzono bledna operacje\n"); break;
     }
+    if (!(oper <= 4)) return 0;
     printf("a: %d\nb: %d\n", a2, b2);
     if (oper == 4)
         printf("Negacja a: %d\nNegacja b: %d\n", NegateBin(a2), NegateBin(b2));

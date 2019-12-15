@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <conio.h>
 #include <string.h>
 
 int ConvertToBin(int n)
@@ -32,5 +33,6 @@ int main()
     int b = ConvertStringToNumber(a);
     printf(b < 0 ? "Wprowadzono bledna liczbe\n" :
            "Liczba w postaci binarnej jest rowna: %d\n", ConvertToBin(b));
+    getche();
     return 0;
 }
