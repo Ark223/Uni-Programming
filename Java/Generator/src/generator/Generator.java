@@ -7,7 +7,7 @@ import java.util.List;
 public class Generator {
     
     public static void main(String[] args) {
-        List<List<Vector2>> list = generateSquares(generatePoints(new Vector2(350, 350), 50, 2), 50);
+        List<List<Vector2>> list = generateSquares(generatePoints(new Vector2(-8, 8), 16, 2), 16);
         int i = 0;
         for (List<Vector2> l : list) {
             i++; System.out.println(i + ".");
@@ -88,6 +88,7 @@ public class Generator {
             return new Vector2(this.x - v.x, this.y - v.y);
         }
         
+        @Override
         public Vector2 clone() {
             return new Vector2(this.x, this.y);
         }
