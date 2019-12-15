@@ -126,10 +126,6 @@ public class Generator {
             return new Vector2(this.x + v.x, this.y + v.y);
         }
         
-        public Vector2 sub(Vector2 v) {
-            return new Vector2(this.x - v.x, this.y - v.y);
-        }
-        
         @Override
         public Vector2 clone() {
             return new Vector2(this.x, this.y);
