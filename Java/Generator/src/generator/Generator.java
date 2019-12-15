@@ -63,8 +63,11 @@ public class Generator {
                     curr = curr.add(dv);
                     Vector2 temp = curr.clone();
                     list.add(temp);
-                    if (i == 0) data.max = temp;
-                    else if (i == 2) data.min = temp;
+                    if (currSize == size)
+                    {
+                        if (i == 0) data.max = temp;
+                        else if (i == 2) data.min = temp;
+                    }
                 }
             }
             if (currSize != size)
