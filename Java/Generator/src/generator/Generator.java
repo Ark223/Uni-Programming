@@ -9,22 +9,23 @@ public class Generator {
     public static void main(String[] args) {
         GSquareData data = generateSquares(generatePoints(new Vector2(-8, 8), 16, 2), 16);
         int i = 0;
-        for (List<Vector2> l : data.squares) {
+        for (Square l : data.squares) {
             i++; System.out.println(i + ".");
-            for (Vector2 v : l) {
+            for (Vector2 v : l.points) {
                 System.out.println(v);
             }
+            System.out.println("Min: " + l.min);
+            System.out.println("Max: " + l.max);
         }
-        System.out.println("Min: " + data.min);
-        System.out.println("Max: " + data.max);
     }
     
     public static GSquareData generateSquares(GPointData input, int step)
     {
         GSquareData data = new GSquareData();
         List<Vector2> points = input.points;
-        List<List<Vector2>> list = new ArrayList<>();
+        List<Square> list = new ArrayList<>();
         for (Vector2 p : points) {
+            Square square = new Square();
             List<Vector2> temp = new ArrayList<>();
             int d = (int)step / 2;
             for (int i = 0; i < 4; i++)
@@ -34,9 +35,13 @@ public class Generator {
                                  i == 2 ? new Vector2(d, -d) :
                                  new Vector2(-d, -d);
                 Vector2 n = p.add(offset);
-                temp.add(n.clone());
+                Vector2 t = n.clone();
+                temp.add(t);
+                if (i == 1) square.max = t;
+                else if (i == 3) square.min = t;
             }
-            list.add(temp);
+            square.points = temp;
+            list.add(square);
         }
         data.squares = list;
         int d = (int)step / 2;
@@ -61,12 +66,12 @@ public class Generator {
                                  i == 1 ? new Vector2(0, -step) :
                                  new Vector2(-step, 0);
                     curr = curr.add(dv);
-                    Vector2 temp = curr.clone();
-                    list.add(temp);
+                    Vector2 t = curr.clone();
+                    list.add(t);
                     if (currSize == size)
                     {
-                        if (i == 0) data.max = temp;
-                        else if (i == 2) data.min = temp;
+                        if (i == 0) data.max = t;
+                        else if (i == 2) data.min = t;
                     }
                 }
             }
@@ -86,6 +91,13 @@ public class Generator {
         return data;
     }
     
+    public static class Square
+    {
+        private Vector2 min;
+        private Vector2 max;
+        private List<Vector2> points;
+    }
+    
     public static class GPointData
     {
         private Vector2 min;
@@ -97,7 +109,7 @@ public class Generator {
     {
         private Vector2 min;
         private Vector2 max;
-        private List<List<Vector2>> squares;
+        private List<Square> squares;
     }
     
     public static class Vector2
