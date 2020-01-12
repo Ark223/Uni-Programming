@@ -23,8 +23,8 @@ void RemoveStudent(char* name)
             j = i; break;
         }
     }
-    if (j >= 0)
-        free(students + j);
+    if (j >= 0) free(students + j);
+    count--;
 }
 
 void DisplayStudents()
