@@ -15,16 +15,18 @@ struct student
 int count;
 struct student* students;
 
-void RemoveStudent(char* name)
+void RemoveStudent(int index)
 {
     int j = -1;
     for (int i = 0; i < count; i++) {
-        if (students[i].name == name) {
+        if ((students + i)->index == index) {
             j = i; break;
         }
     }
-    if (j >= 0) free(students + j);
-    count--;
+    if (j >= 0) {
+        free(&students[j]);
+        count--;
+    }
 }
 
 void DisplayStudents()
@@ -46,6 +48,50 @@ int Compare(const void* i1, const void* i2)
     struct student *a = (struct student*)i1;
     struct student *b = (struct student*)i2;
     return strcmp(a->name, b->name);
+}
+
+float CalcAverage(int a) {
+    int b = a;
+    size_t size = 0;
+    while (b) { b /= 10; size++; }
+    int marks[size];
+    int i = size - 1;
+    while (a > 0) {
+        int d = a % 10;
+        a /= 10;
+        marks[i] = d;
+        i--;
+    }
+    float aver = 0;
+    for (int i = 0; i < size; i++) aver += marks[i];
+    aver /= size;
+    return aver;
+}
+
+void FindAverage() {
+    int studentId = 0;
+    float max = 0.0;
+    for (int i = 0; i < count; i++) {
+        float aver1 = CalcAverage((students + i)->marks[0]);
+        float aver2 = CalcAverage((students + i)->marks[1]);
+        float aver3 = CalcAverage((students + i)->marks[2]);
+        float a = (aver1 + aver2 + aver3) / 3.0;
+        if (a > max) max = a;
+        studentId = i + 1;
+    }
+    printf("Student %d ma najwieksza srednia ocen: %lf\n", studentId, max);
+}
+
+void FindBest(int subjectId) {
+    int studentId = 0;
+    float max = 0.0;
+    for (int i = 0; i < count; i++) {
+        int marks = (students + i)->marks[subjectId];
+        float aver = CalcAverage(marks);
+        if (aver > max) max = aver;
+        studentId = i + 1;
+    }
+    printf("Student %d ma najwyzsza ocene z tego przedmiotu: %lf\n", studentId, max);
 }
 
 int main()
@@ -78,13 +124,22 @@ int main()
     printf("6. Wyjscie z programu\n");
     scanf("%d", &exec);
     if (exec == 1) {
-        char* name;
-        printf("\nNazwisko studenta:\n");
-        scanf("%s", &name);
-        RemoveStudent(name);
+        int index;
+        printf("Numer indeksu studenta:\n");
+        scanf("%d", &index);
+        RemoveStudent(index);
     }
     else if (exec == 2) DisplayStudents();
-    else if (exec == 3) qsort(students, count, sizeof(struct student*), Compare);
+    else if (exec == 3) {
+        qsort(students, count, sizeof(struct student*), Compare);
+    }
+    else if (exec == 4) {
+        int subject;
+        printf("Podaj numer przedmiotu:\n");
+        scanf("%d", &subject);
+        FindBest(subject - 1);
+    }
+    else if (exec == 5) FindAverage();
     else return 0;
     goto A;
 }
