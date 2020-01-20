@@ -15,16 +15,21 @@ struct student
 int count;
 struct student* students;
 
-void RemoveStudent(int index)
+void RemoveStudent(char* name)
 {
     int j = -1;
     for (int i = 0; i < count; i++) {
-        if ((students + i)->index == index) {
+        if (strcmp((students + i)->name, name) == 0) {
             j = i; break;
         }
     }
-    if (j >= 0) {
-        free(&students[j]);
+    int n = count;
+    if (j >= 0 && j < n) {
+        n--;
+        for (int k = j; k < n; k++) {
+            students[k] = students[k + 1];
+        }
+        free(&students[count]);
         count--;
     }
 }
@@ -41,6 +46,23 @@ void DisplayStudents()
         printf("Oceny z 2 przedmiotu: %d\n", (students + i)->marks[1]);
         printf("Oceny z 3 przedmiotu: %d\n", (students + i)->marks[2]);
     }
+}
+
+void SortAlphabetic() {
+    int swapped = 0;
+    struct student temp;
+    do {
+        swapped = 0;
+        for (int i = 0; i < count - 1; i++) {
+            int c = strcmp((students + i)->name, (students + i + 1)->name);
+            if (c > 0) {
+                temp = students[i];
+                students[i] = students[i + 1];
+                students[i + 1] = temp;
+                swapped = 1;
+            }
+        }
+    } while (swapped == 1);
 }
 
 int Compare(const void* i1, const void* i2)
@@ -124,15 +146,13 @@ int main()
     printf("6. Wyjscie z programu\n");
     scanf("%d", &exec);
     if (exec == 1) {
-        int index;
-        printf("Numer indeksu studenta:\n");
-        scanf("%d", &index);
-        RemoveStudent(index);
+        char name[25];
+        printf("Nazwisko studenta:\n");
+        scanf("%s", &name);
+        RemoveStudent(name);
     }
     else if (exec == 2) DisplayStudents();
-    else if (exec == 3) {
-        qsort(students, count, sizeof(struct student*), Compare);
-    }
+    else if (exec == 3) SortAlphabetic();
     else if (exec == 4) {
         int subject;
         printf("Podaj numer przedmiotu:\n");
