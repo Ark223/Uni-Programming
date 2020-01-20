@@ -26,9 +26,8 @@ void RemoveStudent(char* name)
     int n = count;
     if (j >= 0 && j < n) {
         n--;
-        for (int k = j; k < n; k++) {
+        for (int k = j; k < n; k++)
             students[k] = students[k + 1];
-        }
         free(&students[count]);
         count--;
     }
@@ -63,13 +62,6 @@ void SortAlphabetic() {
             }
         }
     } while (swapped == 1);
-}
-
-int Compare(const void* i1, const void* i2)
-{
-    struct student *a = (struct student*)i1;
-    struct student *b = (struct student*)i2;
-    return strcmp(a->name, b->name);
 }
 
 float CalcAverage(int a) {
