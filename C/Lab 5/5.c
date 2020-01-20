@@ -90,8 +90,7 @@ void FindAverage() {
         float aver2 = CalcAverage((students + i)->marks[1]);
         float aver3 = CalcAverage((students + i)->marks[2]);
         float a = (aver1 + aver2 + aver3) / 3.0;
-        if (a > max) max = a;
-        studentId = i + 1;
+        if (a > max) { max = a; studentId = i + 1; }
     }
     printf("Student %d ma najwieksza srednia ocen: %lf\n", studentId, max);
 }
