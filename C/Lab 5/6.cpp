@@ -9,7 +9,6 @@ using namespace std;
 
 class student {
     public:
-        student() {};
         string name;
         string birthDate;
         int index;
