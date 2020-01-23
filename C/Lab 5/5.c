@@ -27,7 +27,7 @@ void RemoveStudent(char* name)
     if (j >= 0) {
         for (int k = j; k < n; k++)
             students[k] = students[k + 1];
-        free(&students[count]);
+        free(&students[n]);
         count--;
     }
 }
