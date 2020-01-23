@@ -23,9 +23,8 @@ void RemoveStudent(char* name)
             j = i; break;
         }
     }
-    int n = count;
-    if (j >= 0 && j < n) {
-        n--;
+    int n = count - 1;
+    if (j >= 0) {
         for (int k = j; k < n; k++)
             students[k] = students[k + 1];
         free(&students[count]);
@@ -101,8 +100,7 @@ void FindBest(int subjectId) {
     for (int i = 0; i < count; i++) {
         int marks = (students + i)->marks[subjectId];
         float aver = CalcAverage(marks);
-        if (aver > max) max = aver;
-        studentId = i + 1;
+        if (aver > max) { max = aver; studentId = i + 1; }
     }
     printf("Student %d ma najwyzsza ocene z tego przedmiotu: %lf\n", studentId, max);
 }
