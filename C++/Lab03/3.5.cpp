@@ -1,11 +1,14 @@
 #include <iostream>
+#include <limits>
 using namespace std;
 
 int main() {
     int a = 0;
-    while (a <= 1000) {
+    for (;;) {
         cout << "Podaj liczbe: " << endl;
-        cin >> a;
+        if (cin >> a && a > 1000) break;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     int suma = 0;
     while (a) {
