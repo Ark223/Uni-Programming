@@ -2,17 +2,17 @@
 using namespace std;
 
 double MathPow(double a, int n) {
-	if (n > 0) return a * MathPow(a, n - 1);
-	else if (n < 0) return 1.0 / MathPow(a, -n);
-	return 1.0;
+    if (n > 0) return a * MathPow(a, n - 1);
+    else if (n < 0) return 1.0 / MathPow(a, -n);
+    return 1.0;
 }
 
 int main() {
-	double a; int n;
-	cout << "Podaj liczbe: " << endl;
-	cin >> a;
-	cout << "Podaj potege: " << endl;
-	cin >> n;
-	cout << "Wynik: " << MathPow(a, n) << endl;
-	return 0;
+    double a; int n;
+    cout << "Podaj liczbe: " << endl;
+    cin >> a;
+    cout << "Podaj potege: " << endl;
+    cin >> n;
+    cout << "Wynik: " << MathPow(a, n) << endl;
+    return 0;
 }
