@@ -20,6 +20,10 @@ int main() {
         cout << "Rownanie nie posiada rzeczywistych rozwiazan" << endl;
         return 0;
     }
+    else if (delta == 0.0) {
+        cout << "Rownanie ma 1 jedno rozwiazanie: " << -b / (2 * a) << endl;
+        return 0;
+    }
     delta = sqrt(delta);
     cout << "Rownanie ma 2 rozwiazania: " << (-b - delta) / (2 * a)
         << " oraz " << (-b + delta) / (2 * a);
