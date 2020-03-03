@@ -76,7 +76,7 @@ int main() {
         for (int i = 0; i < c.size(); i++)
             cout << c[i] << ' '; cout << endl;
     }
-    cout << "Podaj numer elementu tablicy aby go wyswietlic: ";
+    cout << "Podaj numer elementu tablicy aby wyswietlic jego wartosc: ";
     cin >> temp;
     if (temp > 0 && temp <= n) {
         cout << "Element " << temp << " posiada wartosc: " << a[temp - 1] << endl;
