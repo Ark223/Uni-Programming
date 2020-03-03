@@ -14,12 +14,14 @@ int NWD(int a, int b) {
 
 int main()
 {
-    int a, b;
+    int a, b, c, d;
     cout << "Wpisz pierwsza liczbe: " << endl;
     cin >> a;
     cout << "Wpisz druga liczbe: " << endl;
     cin >> b;
-    cout << "Najwiekszy wspolny dzielnik: " << NWD(a, b) << endl;
-    cout << "Najmniejsza wspolna wielokrotnosc: " << (a * b / NWD(a, b)) << endl;
+	int c = NWD(a, b);
+	int d = a * b / c;
+    cout << "Najwiekszy wspolny dzielnik: " << c << endl;
+    cout << "Najmniejsza wspolna wielokrotnosc: " << d << endl;
     return 0;
 }

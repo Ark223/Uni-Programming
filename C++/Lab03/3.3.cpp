@@ -15,9 +15,10 @@ int SilniaRecursively(int n) {
 
 int main()
 {
-    int a;
+    int a, b, c;
     cout << "Wpisz liczbe: " << endl;
     cin >> a;
-    cout << "Silnia liczona iteracyjnie: " << Silnia(a) << endl;
-    cout << "Silnia liczona rekurencyjnie: " << SilniaRecursively(a) << endl;
+	int b = Silnia(a), c = SilniaRecursively(a);
+    cout << "Silnia liczona iteracyjnie: " << b << endl;
+    cout << "Silnia liczona rekurencyjnie: " << c << endl;
 }
