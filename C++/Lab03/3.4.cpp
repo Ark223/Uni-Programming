@@ -13,6 +13,7 @@ int main() {
     cin >> a;
     cout << "Podaj potege: " << endl;
     cin >> n;
-    cout << "Wynik: " << MathPow(a, n) << endl;
+	double b = MathPow(a, n);
+    cout << "Wynik: " << b << endl;
     return 0;
 }

@@ -19,8 +19,7 @@ int main()
     cin >> a;
     cout << "Wpisz druga liczbe: " << endl;
     cin >> b;
-	int c = NWD(a, b);
-	int d = a * b / c;
+	c = NWD(a, b); d = a * b / c;
     cout << "Najwiekszy wspolny dzielnik: " << c << endl;
     cout << "Najmniejsza wspolna wielokrotnosc: " << d << endl;
     return 0;

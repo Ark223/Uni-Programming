@@ -15,7 +15,7 @@ int SilniaRecursively(int n) {
 
 int main()
 {
-    int a, b, c;
+    int a;
     cout << "Wpisz liczbe: " << endl;
     cin >> a;
 	int b = Silnia(a), c = SilniaRecursively(a);
