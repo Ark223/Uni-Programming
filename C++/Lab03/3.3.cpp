@@ -18,7 +18,7 @@ int main()
     int a;
     cout << "Wpisz liczbe: " << endl;
     cin >> a;
-	int b = Silnia(a), c = SilniaRecursively(a);
+    int b = Silnia(a), c = SilniaRecursively(a);
     cout << "Silnia liczona iteracyjnie: " << b << endl;
     cout << "Silnia liczona rekurencyjnie: " << c << endl;
 }

@@ -48,7 +48,7 @@ vector<int> DividableByThree(vector<int> a, int n) {
     for (int i = 0; i < n; i++)
         if (a[i] % 3 == 0)
             b.push_back(a[i]);
-	return b;
+    return b;
 }
 
 int main() {
