@@ -4,6 +4,7 @@ using namespace std;
 
 int main() {
     int a, b, c;
+    double x1, x2;
     cout << "Podaj wspolczynniki a, b i c: " << endl;
     cin >> a >> b >> c;
     if (a == 0) {
@@ -12,7 +13,8 @@ int main() {
                 "Rownanie ma nieskonczenie wiele rozwiazan");
             return 0;
         }
-        cout << "Rownanie ma jedno rozwiazanie: " << (-c / b) << endl;
+        x1 = -c / b;
+        cout << "Rownanie ma jedno rozwiazanie: " << x1 << endl;
         return 0;
     }
     double delta = b * b - 4.0 * a * c;
@@ -21,12 +23,12 @@ int main() {
         return 0;
     }
     else if (delta == 0.0) {
-        cout << "Rownanie ma 1 jedno rozwiazanie: " << -b / (2 * a) << endl;
+        x1 = -b / (2 * a);
+        cout << "Rownanie ma jedno rozwiazanie: " << x1 << endl;
         return 0;
     }
     delta = sqrt(delta);
-    cout << "Rownanie ma 2 rozwiazania: " << (-b - delta) / (2 * a)
-        << " oraz " << (-b + delta) / (2 * a);
+    x1 = (-b - delta) / (2 * a); x2 = (-b + delta) / (2 * a);
+    cout << "Rownanie ma dwa rozwiazania: " << x1 << " oraz " << x2;
     return 0;
-
 }
