@@ -21,4 +21,6 @@ int main()
     int b = Silnia(a), c = SilniaRecursively(a);
     cout << "Silnia liczona iteracyjnie: " << b << endl;
     cout << "Silnia liczona rekurencyjnie: " << c << endl;
+    return 0;
 }
+

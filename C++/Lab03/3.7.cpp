@@ -32,3 +32,4 @@ int main() {
     cout << "Rownanie ma dwa rozwiazania: " << x1 << " oraz " << x2;
     return 0;
 }
+

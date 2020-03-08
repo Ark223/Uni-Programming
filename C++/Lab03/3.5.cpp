@@ -18,3 +18,4 @@ int main() {
     cout << "Suma cyfr: " << suma << endl;
     return 0;
 }
+

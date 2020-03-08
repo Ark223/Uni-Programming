@@ -24,3 +24,4 @@ int main()
     cout << "Najmniejsza wspolna wielokrotnosc: " << d << endl;
     return 0;
 }
+

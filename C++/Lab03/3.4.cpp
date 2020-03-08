@@ -17,3 +17,4 @@ int main() {
     cout << "Wynik: " << b << endl;
     return 0;
 }
+
