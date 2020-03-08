@@ -64,17 +64,19 @@ int main() {
     cout << "Wpisane liczby: " << endl;
     for (int i = 0; i < n; i++)
         cout << a[i] << ' '; cout << endl;
-    cout << "Najwieksza wartosc: " << Max(a, n) << endl;
-    cout << "Najmniejsza wartosc: " << Min(a, n) << endl;
-    cout << "Srednia arytmetyczna: " << Average(a, n) << endl;
-    cout << "Suma elementow: " << Sum(a, n) << endl;
-    cout << "Odchylenie standardowe: " << StandardDeviation(a, n) << endl;
-    cout << "Wariancja: " << Variance(a, n) << endl;
-    vector<int> c = DividableByThree(a, n);
-    if (c.size() > 0) {
+    int b = Max(a, n), c = Min(a, n), d = Sum(a, n);
+    double e = Average(a, n), f = StandardDeviation(a, n), g = Variance(a, n);
+    cout << "Najwieksza wartosc: " << b << endl;
+    cout << "Najmniejsza wartosc: " << c << endl;
+    cout << "Srednia arytmetyczna: " << e << endl;
+    cout << "Suma elementow: " << d << endl;
+    cout << "Odchylenie standardowe: " << f << endl;
+    cout << "Wariancja: " << g << endl;
+    vector<int> h = DividableByThree(a, n);
+    if (h.size() > 0) {
         cout << "Liczby podzielne przez 3: ";
-        for (int i = 0; i < c.size(); i++)
-            cout << c[i] << ' '; cout << endl;
+        for (int i = 0; i < h.size(); i++)
+            cout << h[i] << ' '; cout << endl;
     }
     cout << "Podaj numer elementu tablicy aby wyswietlic jego wartosc: ";
     cin >> temp;
