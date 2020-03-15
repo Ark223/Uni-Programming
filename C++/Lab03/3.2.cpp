@@ -24,25 +24,28 @@ int Det(int matrix[15][15], int size) {
     return det;
 }
 
-int[][] Multiplication(int a[15][15], int b[15][15], int size) {
-    int result[15][15];
+int** Multiplication(int a[15][15], int b[15][15], int size) {
+    int** result = new int*[size];
     for (int i = 0; i < size; i++) {
+        result[i] = new int[size];
         for (int j = 0; j < size; j++) {
             result[i][j] = 0;
-            for (int k = 0; k < size; k++) {
+            for (int k = 0; k < size; k++)
                 result[i][j] += a[i][k] * b[k][j];
-            }
         }
     }
     return result;
 }
 
-int[][] Transpose(int a[15][15], int size) {
-    int trans[15][15];
-    for (int i = 0; i < size; i++)
-        for (int j = 0; j < size; j++)
-            trans[j][i] = a[i][j];
-    return trans;
+int** Transpose(int a[15][15], int size) {
+    int** result = new int*[size];
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (i == 0) result[j] = new int[size];
+            result[j][i] = a[i][j];
+        }
+    }
+    return result;
 }
 
 int main() {
@@ -54,38 +57,44 @@ int main() {
         for (int j = 0; j < size; j++)
             cin >> a[i][j];
     cout << "Macierz ma postac: " << endl;
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++)
             cout << a[i][j] << "\t";
         cout << endl;
+    }
     cout << "Wybierz dzialanie: \n1. Wyznacznik macierzy\n" <<
         "2. Mnozenie macierzy\n3. Obliczanie transpozycji" << endl;
     cin >> choose;
     switch (choose) {
-        case 1:
+        case 1: {
             int det = Det(a, size);
             cout << "Wyznacznik macierzy wynosi: " << det << endl;
             break;
-        case 2:
+        }
+        case 2: {
             int b[15][15];
             cout << "Wypisz liczby dla drugiej macierzy: " << endl;
             for (int i = 0; i < size; i++)
                 for (int j = 0; j < size; j++)
                     cin >> b[i][j];
-            int[][] multi = Multiplication(a, b, size);
+            int** multi = Multiplication(a, b, size);
             cout << "Wynik mnozenia: " << endl;
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++)
                     cout << multi[i][j] << "\t";
                 cout << endl;
+            }
             break;
-        case 3:
-            int[][] trans = Transpose(a, size);
-            for (int i = 0; i < size; i++)
+        }
+        case 3: {
+            int** trans = Transpose(a, size);
+            for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++)
                     cout << trans[i][j] << "\t";
                 cout << endl;
+            }
             break;
+        }
     }
     return 0;
 }
