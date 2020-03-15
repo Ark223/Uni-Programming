@@ -1,20 +1,25 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
-double MathPow(double a, int n) {
-    if (n > 0) return a * MathPow(a, n - 1);
-    else if (n < 0) return 1.0 / MathPow(a, -n);
-    return 1.0;
-}
-
 int main() {
-    double a; int n;
-    cout << "Podaj liczbe: " << endl;
-    cin >> a;
-    cout << "Podaj potege: " << endl;
-    cin >> n;
-    double b = MathPow(a, n);
-    cout << "Wynik: " << b << endl;
-    return 0;
+	int choose;
+	double a, b, result;
+	cout << "Podaj liczbe a i b: " << endl;
+	cin >> a >> b;
+	cout << "Dzialania: 1.Suma\n2.Roznica\n3.Iloczyn\n4.Iloraz" << endl;
+	cin >> choose;
+	while (choose == 4 && b == 0.0) {
+		cout << "Nie mozna dzielic przez zero! Prosze wpisac inna liczbe!" << endl;
+		cin >> b;
+	}
+	switch (choose) {
+		case 1: result = a + b; break;
+		case 2: result = a - b; break;
+		case 3: result = a * b; break;
+		default: result = a / b; break;
+	}
+	cout << "Wynik: " << result << endl;
+	return 0;
 }
 

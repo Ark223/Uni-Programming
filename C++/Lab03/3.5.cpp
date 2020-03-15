@@ -1,21 +1,20 @@
 #include <iostream>
-#include <limits>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 int main() {
-    int a = 0;
-    for (;;) {
-        cout << "Podaj liczbe: " << endl;
-        if (cin >> a && a > 1000) break;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
-    int suma = 0;
-    while (a) {
-        suma += a % 10;
-        a /= 10;
-    }
-    cout << "Suma cyfr: " << suma << endl;
-    return 0;
+	srand(time(NULL));
+	int a = 1, b, r = rand() % 15 + 1;
+	while (true) {
+		cout << "Zgadnij liczbe od 1 do 15: " << endl;
+		cin >> b;
+		if (b > r) (cout << "Podana liczba jest wieksza od wylosowanej" << endl);
+		else if (b < r) (cout << "Podana liczba jest mniejsza od wylosowanej" << endl);
+		else (cout << "Trafiles po " << a << " probach!" << endl);
+		if (r == b) break; a++;
+	}
+	return 0;
 }
 
