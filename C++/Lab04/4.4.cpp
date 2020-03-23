@@ -18,8 +18,7 @@ int main() {
         cin >> temp;
         b.push_back(temp);
     }
-    int s = a.size();
-    for (int i = 0; i < s; i++) {
+    for (int i = 0; i < n; i++) {
         aver += double(a[i] * b[i]);
         w += double(b[i]);
     }
