@@ -3,8 +3,8 @@
 using namespace std;
 
 int main() {
-    int n, temp, w = 0;
-    double aver;
+    int n, temp;
+    double aver = 0.0, w = 0.0;
     vector<int> a, b;
     cout << "Podaj ilosc liczb: " << endl;
     cin >> n;
