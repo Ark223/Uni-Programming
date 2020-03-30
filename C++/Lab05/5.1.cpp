@@ -5,8 +5,8 @@ int main() {
     int a[] = {5, 7, 1, 8, 6, 2, 0, 4, 9, 3}, n = 10;
     for (int i = 0; i < n - 1; i++)
         for (int j = 0; j < n - i - 1; j++)
-            if (a[j] > a[j + 1]) {
-                int temp = a[j];
+            if (a[j] > a[j + 1]) { // porz¹dek rosn¹cy
+                int temp = a[j]; // zamiana miejsc s¹siednich elementów
                 a[j] = a[j + 1];
                 a[j + 1] = temp;
             }
