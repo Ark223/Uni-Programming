@@ -93,7 +93,7 @@ int main() {
             vector<int> a((istream_iterator<int>(is)),
                 istream_iterator<int>());
             auto t1 = chrono::high_resolution_clock::now();
-            SelectionSort(a, a.size());
+            MergeSort(a, 0, a.size() - 1, a.size());
             auto t2 = chrono::high_resolution_clock::now();
             auto dur = chrono::duration_cast<chrono::milliseconds>(t2 - t1).count();
             cout << nums[i] << ". " << dur << endl;
