@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <chrono>
 #include <ctime>
 #include <fstream>
 #include <iostream>
@@ -73,18 +74,30 @@ void MergeSort(vector<int> &a, int start, int end) {
     Merge(a, start, mid, end);
 }
 
+template <class T>
+string to_string(T t) {
+    stringstream s; s << t;
+    return s.str();
+}
+
 int main() {
     string line;
-    ifstream file("10.txt");
-    while (getline(file, line)) {
-        stringstream is(line);
-        vector<int> a((istream_iterator<int>(is)),
-            istream_iterator<int>());
-        QuickSort(a, 0, a.size() - 1);
-        for (int i = 0; i < a.size(); i++)
-            cout << a[i] << " " << endl;
-        return 0;
+    int nums[10] = {1000, 2000, 3000, 5000,
+        7500, 10000, 20000, 30000, 40000, 50000};
+    for (int i = 0; i < 10; i++) {
+        string path = to_string(nums[i]) + ".txt";
+        ifstream file(path.c_str());
+        while (getline(file, line)) {
+            if (line == "") continue;
+            stringstream is(line);
+            vector<int> a((istream_iterator<int>(is)),
+                istream_iterator<int>());
+            auto t1 = chrono::high_resolution_clock::now();
+            BubbleSort(a, a.size());
+            auto t2 = chrono::high_resolution_clock::now();
+            auto dur = chrono::duration_cast<chrono::milliseconds>(t2 - t1).count();
+            cout << nums[i] << ". " << dur << endl;
+        }
     }
     return 0;
-    //clock_t start = clock();
 }

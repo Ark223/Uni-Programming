@@ -52,7 +52,8 @@ string to_string(T t) {
 
 int main() {
     srand(time(NULL));
-    int nums[10] = {10, 20, 30, 50, 75, 100, 200, 300, 400, 500};
+    int nums[10] = {1000, 2000, 3000, 5000,
+        7500, 10000, 20000, 30000, 40000, 50000};
     for (int i = 0; i < 10; i++) {
         ofstream file;
         string path = to_string(nums[i]) + ".txt";
