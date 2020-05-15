@@ -55,8 +55,8 @@ void QuickSort(vector<int> &a, int start, int end) {
     QuickSort(a, p + 1, end);
 }
 
-void Merge(vector<int> &a, int start, int mid, int end, int size) {
-    int i, j, k, t[size];
+void Merge(vector<int> &a, int start, int mid, int end, int n) {
+    int i, j, k, t[n];
     for (i = start; i <= end; i++) t[i] = a[i];
     i = start; j = mid + 1; k = start;
     while (i <= mid && j <= end) {
@@ -66,12 +66,12 @@ void Merge(vector<int> &a, int start, int mid, int end, int size) {
     while (i <= mid) a[k++] = t[i++];
 }
 
-void MergeSort(vector<int> &a, int start, int end, int size) {
+void MergeSort(vector<int> &a, int start, int end, int n) {
     if (start >= end) return;
     int mid = (start + end) / 2;
-    MergeSort(a, start, mid, size);
-    MergeSort(a, mid + 1, end, size);
-    Merge(a, start, mid, end, size);
+    MergeSort(a, start, mid, n);
+    MergeSort(a, mid + 1, end, n);
+    Merge(a, start, mid, end, n);
 }
 
 template <class T>
@@ -93,7 +93,7 @@ int main() {
             vector<int> a((istream_iterator<int>(is)),
                 istream_iterator<int>());
             auto t1 = chrono::high_resolution_clock::now();
-            MergeSort(a, 0, a.size() - 1, a.size());
+            SelectionSort(a, a.size());
             auto t2 = chrono::high_resolution_clock::now();
             auto dur = chrono::duration_cast<chrono::milliseconds>(t2 - t1).count();
             cout << nums[i] << ". " << dur << endl;
