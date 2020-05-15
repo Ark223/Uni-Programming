@@ -25,7 +25,7 @@ int main() {
     while (i != j) {
         int p = Partition(a, i, j);
         p += 1 - i;
-        if (p >= k) j = i + p - 1;
+        if (p >= k) j = p + i - 1;
         else { k -= p; i += p; }
     }
     cout << "Wybrany element to: " << a[i] << endl;
