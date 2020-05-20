@@ -83,12 +83,12 @@ int MedianOfMedians(vector<int> &a, int k, int start, int end) {
 }
 
 int main() {
-    int n = 35000; //Rozmiar wektora
+    int n = 45000; //Rozmiar wektora
     for (int i = 0; i < 2; i++) {
         cout << (i == 0 ? "Test algorytmu Hoare'a" :
             "Test algorytmu magicznych piatek") << endl;
         for (int j = 0; j < 2; j++) {
-            for (int k = 1; k <= n; k += 1129) {
+            for (int k = 1; k <= n; k += 2647) {
                 vector<int> a = Generate(n);
                 if (j == 0) Reverse(a); else Shuffle(a);
                 auto t1 = chrono::high_resolution_clock::now();
