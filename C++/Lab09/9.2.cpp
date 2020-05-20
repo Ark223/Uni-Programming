@@ -39,10 +39,10 @@ int MedianOfMedians(vector<int> &a, int k, int start, int end) {
     int med = MedianOfMedians(meds,
         meds.size() / 2 + 1, 0, meds.size());
     int p = Pivot(a, start, end, med);
-    int l = p - start + 1;
-    return (l == k) ? a[p] : (l > k) ?
+    int len = p - start + 1;
+    return (k == len) ? a[p] : (k < len) ?
         MedianOfMedians(a, k, start, p) :
-        MedianOfMedians(a, k - l, p + 1, end);
+        MedianOfMedians(a, k - len, p + 1, end);
 }
 
 int main() {
