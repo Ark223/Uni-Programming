@@ -1,6 +1,10 @@
 #include <algorithm>
 #include <chrono>
+#include <fstream>
 #include <iostream>
+#include <iterator>
+#include <sstream>
+#include <string>
 #include <vector>
 using namespace std;
 
@@ -82,15 +86,39 @@ int MedianOfMedians(vector<int> &a, int k, int start, int end) {
         MedianOfMedians(a, k - len, p + 1, end);
 }
 
+void AddToFile(vector<int> a, ofstream &file) {
+    stringstream s;
+    copy(a.begin(), a.end(), ostream_iterator<int>(s, " "));
+    file << s.str() << endl;
+}
+
+bool FileExists(string path) {
+    ifstream file(path);
+    return file.good();
+}
+
 int main() {
-    int n = 45000; //Rozmiar wektora
+    int n = 45000, j; //Rozmiar wektora
+    srand(time(NULL));
+    string path = "dane.txt", line;
+    if (!FileExists(path)) {
+        ofstream output;
+        output.open(path.c_str(), ios_base::app);
+        vector<int> nums = Generate(n);
+        Reverse(nums); AddToFile(nums, output);
+        Shuffle(nums); AddToFile(nums, output);
+        output.close();
+    }
     for (int i = 0; i < 2; i++) {
+        ifstream input(path.c_str()); j = 0;
         cout << (i == 0 ? "Test algorytmu Hoare'a" :
             "Test algorytmu magicznych piatek") << endl;
-        for (int j = 0; j < 2; j++) {
+        while (getline(input, line)) {
+            if (line == "") continue;
             for (int k = 1; k <= n; k += 2647) {
-                vector<int> a = Generate(n);
-                if (j == 0) Reverse(a); else Shuffle(a);
+                stringstream is(line);
+                vector<int> a((istream_iterator<int>(is)),
+                    istream_iterator<int>());
                 auto t1 = chrono::high_resolution_clock::now();
                 int e = i == 0 ? QuickSelect(a, k, a.size()) :
                     n - MedianOfMedians(a, n - k + 1, 0, n) - 1;
@@ -98,8 +126,8 @@ int main() {
                 auto dur = chrono::duration_cast<chrono::milliseconds>(t2 - t1).count();
                 cout << "Zbior: " << (j == 0 ? "odwrocony" : "losowy") <<
                     " - Element: " << k << " - Czas: " << dur << "ms" << endl;
-            }
-        }
+            } j++;
+        } input.close();
     }
     return 0;
 }
