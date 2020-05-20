@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 void Swap(int* a, int* b) {
@@ -7,7 +8,7 @@ void Swap(int* a, int* b) {
     *b = temp;
 }
 
-int Partition(int a[], int i, int j) {
+int Partition(vector<int> &a, int i, int j) {
     int c = a[i];
     while (i < j) {
         while (i < j && a[j] >= c) j--;
@@ -18,7 +19,8 @@ int Partition(int a[], int i, int j) {
 }
 
 int main() {
-    int a[] = {5, 7, 1, 8, 6, 2, 0, 4, 9, 3}, k, n = 10;
+    int k, n = 10;
+    vector<int> a = {5, 7, 1, 8, 6, 2, 0, 4, 9, 3};
     cout << "Ktory element znalezc? "; cin >> k;
     if (k > n || k < 1) { cout << "Zly element!"; return 0; }
     int i = 0, j = n - 1;
