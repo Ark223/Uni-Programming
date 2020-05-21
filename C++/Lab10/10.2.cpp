@@ -3,6 +3,8 @@ using namespace std;
 
 struct Node {
     int value, priority;
+    Node(int v = 0, int p = 0) :
+        value(v), priority(p) {}
 };
 
 class PriorityQueue {
@@ -40,7 +42,7 @@ void PriorityQueue::Pop() {
 
 void PriorityQueue::Push(int v, int p) {
     if (IsFull()) return;
-    Node n = {v, p};
+    Node n = Node(v, p);
     int i = size;
     while (i > 0 && n.priority >=
         elements[i - 1].priority) i--;
@@ -50,11 +52,7 @@ void PriorityQueue::Push(int v, int p) {
 }
 
 Node PriorityQueue::Top() {
-    if (IsEmpty()) {
-        Node n = {0, 0};
-        return n;
-    }
-    return elements[0];
+    return IsEmpty() ? Node() : elements[0];
 }
 
 int PriorityQueue::Size() {
