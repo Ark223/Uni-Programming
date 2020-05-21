@@ -7,7 +7,7 @@ class Queue {
         int capacity; // pojemnosc kolejki
         int* elements; // zbior elementow
     public:
-        Queue(int size); // konstruktor
+        Queue(int capacity); // konstruktor
         ~Queue(); // destruktor
         // funkcje kolejki
         void Pop();
