@@ -38,7 +38,7 @@ void PriorityQueue::Pop() {
     size--;
 }
 
-void PriorityQueue::Push(int v, int p) {
+void PriorityQueue::Push(int v, int p = 0) {
     if (IsFull()) return;
     Node n = {v, p};
     int i = size;
