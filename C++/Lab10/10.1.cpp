@@ -1,18 +1,19 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Queue {
     private:
         int size = 0; //aktualna ilosc elementow
         int capacity; // pojemnosc kolejki
-        int* elements; // zbior elementow
+        string* elements; // zbior elementow
     public:
         Queue(int capacity); // konstruktor
         ~Queue(); // destruktor
         // funkcje kolejki
-        int Front();
+        string Front();
         void Pop();
-        void Push(int);
+        void Push(string);
         int Size();
         bool IsEmpty();
         bool IsFull();
@@ -20,15 +21,15 @@ class Queue {
 
 Queue::Queue(int cap) {
     capacity = cap;
-    elements = new int[cap];
+    elements = new string[cap];
 }
 
 Queue::~Queue() {
     delete[] elements;
 }
 
-int Queue::Front() {
-    return IsEmpty() ? 0 : elements[0];
+string Queue::Front() {
+    return IsEmpty() ? "" : elements[0];
 }
 
 void Queue::Pop() {
@@ -38,7 +39,7 @@ void Queue::Pop() {
     size--;
 }
 
-void Queue::Push(int e) {
+void Queue::Push(string e) {
     if (IsFull()) return;
     elements[size++] = e;
 }
@@ -57,9 +58,9 @@ bool Queue::IsFull() {
 
 int main() {
     Queue q(10);
-    q.Push(3);
-    q.Push(7);
-    q.Push(15);
+    q.Push("3");
+    q.Push("7");
+    q.Push("15");
     cout << q.Front() << endl;
     q.Pop();
     cout << q.Front() << endl;

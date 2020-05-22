@@ -1,8 +1,10 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 struct Node {
-    int value, priority;
+    string value;
+    int priority;
 };
 
 class PriorityQueue {
@@ -16,7 +18,7 @@ class PriorityQueue {
         // funkcje kolejki
         Node Front();
         void Pop();
-        void Push(int, int);
+        void Push(string, int);
         int Size();
         bool IsEmpty();
         bool IsFull();
@@ -32,7 +34,7 @@ PriorityQueue::~PriorityQueue() {
 }
 
 Node PriorityQueue::Front() {
-    return IsEmpty() ? Node{0, 0} : elements[0];
+    return IsEmpty() ? Node{"", 0} : elements[0];
 }
 
 void PriorityQueue::Pop() {
@@ -42,7 +44,7 @@ void PriorityQueue::Pop() {
     size--;
 }
 
-void PriorityQueue::Push(int v, int p = 0) {
+void PriorityQueue::Push(string v, int p = 0) {
     if (IsFull()) return;
     Node n = {v, p};
     int i = size;
@@ -67,10 +69,10 @@ bool PriorityQueue::IsFull() {
 
 int main() {
     PriorityQueue pq(10);
-    pq.Push(3, 2);
-    pq.Push(2, 3);
-    pq.Push(7, 1);
-    pq.Push(15, 2);
+    pq.Push("3", 2);
+    pq.Push("2", 3);
+    pq.Push("7", 1);
+    pq.Push("15", 2);
     cout << pq.Front().value << endl;
     pq.Pop();
     cout << pq.Front().value << endl;

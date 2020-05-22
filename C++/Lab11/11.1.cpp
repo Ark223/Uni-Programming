@@ -1,18 +1,19 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Stack {
     private:
         int size = 0; //aktualna ilosc elementow
         int capacity; // pojemnosc kolejki
-        int* elements; // zbior elementow
+        string* elements; // zbior elementow
     public:
         Stack(int capacity); // konstruktor
         ~Stack(); // destruktor
         // funkcje kolejki
         void Pop();
-        void Push(int);
-        int Top();
+        void Push(string);
+        string Top();
         int Size();
         bool IsEmpty();
         bool IsFull();
@@ -20,7 +21,7 @@ class Stack {
 
 Stack::Stack(int cap) {
     capacity = cap;
-    elements = new int[cap];
+    elements = new string[cap];
 }
 
 Stack::~Stack() {
@@ -29,16 +30,16 @@ Stack::~Stack() {
 
 void Stack::Pop() {
     if (IsEmpty()) return;
-    elements[--size] = 0;
+    elements[--size] = "";
 }
 
-void Stack::Push(int e) {
+void Stack::Push(string e) {
     if (IsFull()) return;
     elements[size++] = e;
 }
 
-int Stack::Top() {
-    return IsEmpty() ? 0 : elements[size - 1];
+string Stack::Top() {
+    return IsEmpty() ? "" : elements[size - 1];
 }
 
 int Stack::Size() {
@@ -55,9 +56,9 @@ bool Stack::IsFull() {
 
 int main() {
     Stack s(10);
-    s.Push(3);
-    s.Push(7);
-    s.Push(15);
+    s.Push("3");
+    s.Push("7");
+    s.Push("15");
     cout << s.Top() << endl;
     s.Pop();
     cout << s.Top() << endl;
