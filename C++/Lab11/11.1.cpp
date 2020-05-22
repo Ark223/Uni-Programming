@@ -5,18 +5,18 @@ using namespace std;
 class Stack {
     private:
         int size = 0; //aktualna ilosc elementow
-        int capacity; // pojemnosc kolejki
+        int capacity; // pojemnosc stosu
         string* elements; // zbior elementow
     public:
         Stack(int capacity); // konstruktor
         ~Stack(); // destruktor
-        // funkcje kolejki
-        void Pop();
-        void Push(string);
-        string Top();
-        int Size();
-        bool IsEmpty();
-        bool IsFull();
+        // funkcje stosu
+        void Pop(); // usun element z wierzcholka stosu
+        void Push(string); // wstaw element na koniec wierzcholka stosu
+        string Top(); // zwroc element lezacy na wierzcholku stosu
+        int Size(); // zwroc ilosc elementow w kolejce
+        bool IsEmpty(); // sprawdz czy stos jest pusty
+        bool IsFull(); // sprawdz czy stos jest pelny
 };
 
 Stack::Stack(int cap) {

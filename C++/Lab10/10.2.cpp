@@ -9,19 +9,19 @@ struct Node {
 
 class PriorityQueue {
     private:
-        int size = 0; //aktualna ilosc elementow
+        int size = 0; // aktualna ilosc elementow
         int capacity; // pojemnosc kolejki
         Node* elements; // zbior elementow
     public:
         PriorityQueue(int capacity); // konstruktor
         ~PriorityQueue(); // destruktor
         // funkcje kolejki
-        Node Front();
-        void Pop();
-        void Push(string, int);
-        int Size();
-        bool IsEmpty();
-        bool IsFull();
+        Node Front(); // zwroc pierwszy element
+        void Pop(); // usun pierwszy element
+        void Push(string, int); // wloz element w odpowiednie miejsce
+        int Size(); // zwroc ilosc elementow w kolejce
+        bool IsEmpty(); // sprawdz czy kolejka jest pusta
+        bool IsFull(); // sprawdz czy kolejka jest pelna
 };
 
 PriorityQueue::PriorityQueue(int cap) {
@@ -40,18 +40,18 @@ Node PriorityQueue::Front() {
 void PriorityQueue::Pop() {
     if (IsEmpty()) return;
     for (int i = 0; i < size; i++)
-        elements[i] = elements[i + 1];
-    size--;
+        elements[i] = elements[i + 1]; // przesun elementy do poczatku
+    elements[--size] = Node{"", 0}; // okresl ostatni byly element jako pusty
 }
 
 void PriorityQueue::Push(string v, int p = 0) {
     if (IsFull()) return;
     Node n = {v, p};
-    int i = size;
-    while (i > 0 && n.priority >=
-        elements[i - 1].priority) i--;
-    for (int j = i; j < size; j++)
-        elements[j + 1] = elements[j];
+    int i = size; // sugerowane miejsce dla nowego elementu
+    while (i > 0 && n.priority >= // w przypadku gdy element posiada wiekszy priorytet..
+        elements[i - 1].priority) i--; // znajdz odpowiednie miejsce dla elementu
+    for (int j = i; j < size; j++) // przesun sprawdzane elementy o 1 miejsce w prawo..
+        elements[j + 1] = elements[j]; // aby zarezerwowac miejsce dla nowego elementu
     elements[i] = n; size++;
 }
 

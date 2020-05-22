@@ -6,13 +6,12 @@ using namespace std;
 
 class Stack {
     private:
-        int size = 0; //aktualna ilosc elementow
-        int capacity; // pojemnosc kolejki
-        int* elements; // zbior elementow
+        int size = 0;
+        int capacity;
+        int* elements;
     public:
-        Stack(int capacity); // konstruktor
-        ~Stack(); // destruktor
-        // funkcje kolejki
+        Stack(int capacity);
+        ~Stack();
         void Pop();
         void Push(int);
         int Top();
@@ -67,24 +66,24 @@ int main() {
     cout << "Podaj wyrazenie w notacji ONP: " << endl;
     while (1) {
         cin >> str;
-        if (str[0] == '=') {
-            cout << "Wynik: " << s.Top()
+        if (str[0] == '=') { // ostatni znak to =, a zatem mamy wynik..
+            cout << "Wynik: " << s.Top() // zwroc wartosc ostatniego elementu stosu
                 << endl; return 0;
         }
-        else if (IsDigit(str[0])) {
+        else if (IsDigit(str[0])) { // czy znak jest cyfra
             a = 0; b = 0;
-            while (str[b])
+            while (str[b]) // zamien znaki na liczbe (koncz przy spacji)
                 a = a * 10 + str[b++] - 48;
-            s.Push(a); continue;
+            s.Push(a); continue; // dodaj otrzymana liczbe do stosu
         }
-        b = s.Top(); s.Pop();
+        b = s.Top(); s.Pop(); // zdejmij ze stosu jedna i druga liczbe
         a = s.Top(); s.Pop();
-        switch (str[0]) {
+        switch (str[0]) { // dokonaj dzialania
             case '+': c = a + b; break;
             case '-': c = a - b; break;
             case '*': c = a * b; break;
             case '/': c = a / b; break;
-        } s.Push(c);
+        } s.Push(c); // wloz wynik dzialania do stosu
     }
     return 0;
 }

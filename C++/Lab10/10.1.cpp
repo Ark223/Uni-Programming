@@ -4,19 +4,19 @@ using namespace std;
 
 class Queue {
     private:
-        int size = 0; //aktualna ilosc elementow
+        int size = 0; // aktualna ilosc elementow
         int capacity; // pojemnosc kolejki
         string* elements; // zbior elementow
     public:
         Queue(int capacity); // konstruktor
         ~Queue(); // destruktor
         // funkcje kolejki
-        string Front();
-        void Pop();
-        void Push(string);
-        int Size();
-        bool IsEmpty();
-        bool IsFull();
+        string Front(); // zwroc pierwszy element
+        void Pop(); // usun pierwszy element
+        void Push(string); // dodaj element na koniec kolejki
+        int Size(); // zwroc ilosc elementow w kolejce
+        bool IsEmpty(); // sprawdz czy kolejka jest pusta
+        bool IsFull(); // sprawdz czy kolejka jest pelna
 };
 
 Queue::Queue(int cap) {
@@ -35,8 +35,8 @@ string Queue::Front() {
 void Queue::Pop() {
     if (IsEmpty()) return;
     for (int i = 0; i < size; i++)
-        elements[i] = elements[i + 1];
-    size--;
+        elements[i] = elements[i + 1]; // przesun elementy do poczatku
+    elements[--size] = ""; // okresl ostatni byly element jako pusty
 }
 
 void Queue::Push(string e) {
