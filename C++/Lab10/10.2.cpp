@@ -14,9 +14,9 @@ class PriorityQueue {
         PriorityQueue(int capacity); // konstruktor
         ~PriorityQueue(); // destruktor
         // funkcje kolejki
+        Node Front();
         void Pop();
         void Push(int, int);
-        Node Top();
         int Size();
         bool IsEmpty();
         bool IsFull();
@@ -29,6 +29,10 @@ PriorityQueue::PriorityQueue(int cap) {
 
 PriorityQueue::~PriorityQueue() {
     delete[] elements;
+}
+
+Node PriorityQueue::Front() {
+    return IsEmpty() ? Node{0, 0} : elements[0];
 }
 
 void PriorityQueue::Pop() {
@@ -49,10 +53,6 @@ void PriorityQueue::Push(int v, int p = 0) {
     elements[i] = n; size++;
 }
 
-Node PriorityQueue::Top() {
-    return IsEmpty() ? Node{0, 0} : elements[0];
-}
-
 int PriorityQueue::Size() {
     return size;
 }
@@ -71,8 +71,8 @@ int main() {
     pq.Push(2, 3);
     pq.Push(7, 1);
     pq.Push(15, 2);
-    cout << pq.Top().value << endl;
+    cout << pq.Front().value << endl;
     pq.Pop();
-    cout << pq.Top().value << endl;
+    cout << pq.Front().value << endl;
     return 0;
 }

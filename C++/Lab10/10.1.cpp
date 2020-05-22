@@ -10,9 +10,9 @@ class Queue {
         Queue(int capacity); // konstruktor
         ~Queue(); // destruktor
         // funkcje kolejki
+        int Front();
         void Pop();
         void Push(int);
-        int Top();
         int Size();
         bool IsEmpty();
         bool IsFull();
@@ -27,6 +27,10 @@ Queue::~Queue() {
     delete[] elements;
 }
 
+int Queue::Front() {
+    return IsEmpty() ? 0 : elements[0];
+}
+
 void Queue::Pop() {
     if (IsEmpty()) return;
     for (int i = 0; i < size; i++)
@@ -37,10 +41,6 @@ void Queue::Pop() {
 void Queue::Push(int e) {
     if (IsFull()) return;
     elements[size++] = e;
-}
-
-int Queue::Top() {
-    return IsEmpty() ? 0 : elements[0];
 }
 
 int Queue::Size() {
@@ -60,8 +60,8 @@ int main() {
     q.Push(3);
     q.Push(7);
     q.Push(15);
-    cout << q.Top() << endl;
+    cout << q.Front() << endl;
     q.Pop();
-    cout << q.Top() << endl;
+    cout << q.Front() << endl;
     return 0;
 }
