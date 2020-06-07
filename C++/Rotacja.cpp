@@ -10,8 +10,7 @@ int** obrocMacierz(int** a, int n, int sel) {
             b[i][j] = (sel > 0) ?
                 a[n - j - 1][i] :
                 a[j][n - i - 1];
-    }
-    return b;
+    } return b;
 }
 
 void wyswietl(int** a, int n) {
